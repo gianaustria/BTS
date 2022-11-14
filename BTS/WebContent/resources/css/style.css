@@ -1,0 +1,40 @@
+
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #5098A5;
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Style the content */
+.content {
+  background: url(https://techcrunch.com/wp-content/uploads/2017/05/gettyimages-580833893.jpg);
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 1000px; 
+  padding-top: 400px;
+}
+
+/* Style the footer */
+.footer {
+  background-color: #F0FFFF;
+  padding: 10px;
+}
+
+

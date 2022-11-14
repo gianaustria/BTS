@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"	
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+	
+	<h:head>
+		<title>Profile</title>
+		<h:outputStylesheet library="css" name="style.css"/>
+		<h:outputStylesheet library="css" name="bootstrap.min.css"/>
+		<h:outputStylesheet library="css" name="form.css"/>
+		<link href='https://fonts.googleapis.com/css?family=Amarante' rel='stylesheet' />
+		<link href='https://fonts.googleapis.com/css?family=Bebas Neue' rel='stylesheet'/>
+		<style>
+		 .active 
+		{
+				  background-color: #96AFAF;
+				  color: white;
+		}
+		.error
+		{
+			color: red;
+		}
+		.backcolor
+		{
+		 		  background-color: #DAFFFF;
+	
+		}
+		.fsize	{
+    			font-family: 'Bebas Neue';font-size: 65px;
+				}
+		</style>
+		
+	</h:head>
+	
+	<h:body>
+	<div class="topnav">
+			  <a href="LandingPage.xhtml">Home</a>
+			  <a href="register.xhtml">Register</a>
+			  <a href="login.xhtml">Log-In</a>
+			  <a href="info-page.xhtml">Information Page</a>
+			  <a href="beyond-the-sea.xhtml">Beyond the Sea</a>
+			  <a href="shop.xhtml">Fish Shop</a>
+			  <a href="fundraising.xhtml">Fundraising</a>
+			  <a href="AboutUs.xhtml">About Us</a>
+			  <a href="user-profile.xhtml">Profile</a>
+		</div>
+	<div class="container">
+   
+		<h3>User Profile</h3>
+		<!-- profile pic above full name -->
+		
+		Full Name: #{projectBean.fName} #{projectBean.lName}
+		
+		<br/><br/>
+		
+		Email: #{projectBean.email}
+		
+		<br/><br/>
+		
+		Mobile Number: #{projectBean.mobileNum} 
+	
+		<br/><br/>
+		
+		Birthday: #{projectBean.bday}
+		
+		<br/><br/>
+		
+		Gender: #{projectBean.gender}
+		<br/><br/>
+		<h:commandButton value="Update" action="#{projectController.loadUser(tempProj.userId)}" />
+		<br/><br/>
+		
+	</div>
+		
+		<br/><br/>
+	</h:body>
+</html>

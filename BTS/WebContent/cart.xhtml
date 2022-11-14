@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"	
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+	
+<h:head>
+<title>Pishy Shop</title>
+		<h:outputStylesheet library="css" name="style.css"/>
+		<h:outputStylesheet library="css" name="bootstrap.min.css"/>
+				<h:outputStylesheet library="css" name="form.css"/>
+		<link href='https://fonts.googleapis.com/css?family=Bebas Neue' rel='stylesheet'/>
+		<link href='https://fonts.googleapis.com/css?family=Bellota Text' rel='stylesheet'/>
+		<style>
+		.active {
+				  background-color: #96AFAF;
+				  color: white;
+				}
+		.info {
+		  padding-top: 50px;
+		  padding-right: 30px;
+		  padding-bottom: 50px;
+		  padding-left: 80px;	  	
+			}
+			 .backcolor
+		{
+		 		  background-color: #DAFFFF;
+	
+		}
+		.fsize	{
+    			font-family: 'Bebas Neue';font-size: 59px;
+				}
+		p{
+		font-family: 'Bellota Text';font-size: 22px;
+		}
+		</style>
+		<f:metadata>
+		<f:event type="preRenderView" listener="#{cartController.loadItems}"/> 
+	</f:metadata>
+</h:head>
+
+<h:body class="backcolor">
+<div class="topnav">
+			  <a href="LandingPage.xhtml">Home</a>
+			  <a href="register.xhtml">Register</a>
+			  <a href="login.xhtml">Log-In</a>
+			  <a href="info-page.xhtml">Information Page</a>
+			  <a href="beyond-the-sea.xhtml">Beyond the Sea</a>
+			  <a class="active"  href="shop.xhtml">Fish Shop</a>
+			  <a href="fundraising.xhtml">Fundraising</a>
+			  <a href="AboutUs.xhtml">About Us</a>
+			</div>
+			
+	<h5 class="fsize" align="center">My Cart</h5>
+	<h:panelGroup layout="block" styleClass="row justify-content-center">
+	<h:panelGroup layout="block" styleClass="col-md-auto">
+			<h:form prependId="false">
+			<table class="table table-striped">
+				<tr>
+					<th>Image</th>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Price</th>
+					<th>Option</th>
+				</tr>
+				<tbody>
+					<ui:repeat var="tempItem" value="#{cartController.items}">
+					<tr>
+						<th><img src="/images/metal.jpg/"/></th>
+						<th>#{tempItem.id}</th>
+						<th>#{tempItem.name}</th>
+						<th>#{tempItem.price}</th>
+						<th><h:commandLink value="Remove" onclick="if (!confirm('Are you sure you want to remove item?')) return false" 
+						action="#{cartController.deleteItem(tempItem.id)}"/></th>
+					</tr>
+					<tr>
+
+					</tr>
+					</ui:repeat>
+				</tbody>
+			</table>
+			<h:commandLink value="Proceed to checkout..." action="#{cartController.checkout()}">
+			</h:commandLink>
+			<hr/>
+			<h:commandLink value="Continue Shopping" action="#{productController.index()}"></h:commandLink>
+			</h:form>
+</h:panelGroup>
+</h:panelGroup>
+</h:body>
+	
+</html>

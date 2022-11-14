@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"	
+	xmlns:f="http://java.sun.com/jsf/core"
+	>
+	
+	<h:head>
+		<title>Support Beyond the Sea</title>
+		<h:outputStylesheet library="css" name="style.css"/>
+		<h:outputStylesheet library="css" name="bootstrap.min.css"/>
+		<h:outputStylesheet library="css" name="form.css"/>
+		<link href='https://fonts.googleapis.com/css?family=Bebas Neue' rel='stylesheet'/>
+		<link href='https://fonts.googleapis.com/css?family=Bellota Text' rel='stylesheet'/>
+		<style>
+		.active {
+				  background-color: #96AFAF;
+				  color: white;
+				}
+		.info {
+		  padding-top: 50px;
+		  padding-right: 30px;
+		  padding-bottom: 50px;
+		  padding-left: 80px;	  	
+			}
+			 .backcolor
+		{
+		 		  background-color: #DAFFFF;
+	
+		}
+		.fsize	{
+    			font-family: 'Bebas Neue';font-size: 59px;
+				}
+		p{
+		font-family: 'Bellota Text';font-size: 22px;
+		}
+		</style>
+	</h:head>
+	
+	<h:body class="backcolor">
+	<div class="topnav">
+			  <a href="LandingPage.xhtml">Home</a>
+			  <a href="register.xhtml">Register</a>
+			  <a href="login.xhtml">Log-In</a>
+			  <a href="info-page.xhtml">Information Page</a>
+			  <a href="beyond-the-sea.xhtml">Beyond the Sea</a>
+			  <a href="shop.xhtml">Fish Shop</a>
+			  <a class="active" href="fundraising.xhtml">Fundraising</a>
+			  <a href="AboutUs.xhtml">About Us</a>
+			  <a href="user-profile.xhtml">Profile</a>
+			</div>
+		<div class="info">
+		<h2 class="fsize">Support Beyond the Sea</h2>
+		<h4>Overview</h4>
+			<p>Our goal is to help rehabilitate sea life in order for it to continue propagating and giving us
+			the resources we need in many fields. Through your donation we’ll be able to continue our fight for 
+			sustainability and healthier seas.</p>
+			<p>Donations can be made through credit cards, virtual credit cards, and bank transfer. All 
+			donations go to our operational fund. We also donate the money to the local community near the coast
+			and beach area.</p>
+			<br/><br/>
+			<h:form>
+			Amount:
+				<h:selectOneMenu value="#{donateBean.currency}" id="currency">
+					<f:selectItem itemValue = "" itemLabel = "" />
+					<f:selectItem itemValue = "PHP" itemLabel = "PHP" />
+					<f:selectItem itemValue = "USD" itemLabel = "USD" />
+				</h:selectOneMenu>&#160;
+				<h:inputText value="#{donateBean.donateAmount}" id="donateAmount"/>
+				<br/><br/>
+			Payment Method:
+				<h:selectOneMenu value="#{donateBean.donatePay}" id="donatePay">
+					<f:selectItem itemValue = "" itemLabel = "" />
+					<f:selectItem itemValue = "Bank Transfer" itemLabel = "Bank Transfer" />
+					<f:selectItem itemValue = "Credit Card" itemLabel = "Credit Card" />
+					<f:selectItem itemValue = "Virtual Credit Card" itemLabel = "Virtual Credit Card" />
+				</h:selectOneMenu>
+			<br/><br />
+			
+		
+		<h:commandButton value="Donate" action="#{donateController.addDonation(donateBean)}" />
+		</h:form>
+		</div>
+	</h:body>
+</html>

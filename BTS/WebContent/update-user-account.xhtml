@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"	
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+	
+	<h:head>
+		<title>Account Information</title>
+		<h:outputStylesheet library="css" name="style.css"/>
+		<h:outputStylesheet library="css" name="bootstrap.min.css"/>
+		<h:outputStylesheet library="css" name="form.css"/>
+		<link href='https://fonts.googleapis.com/css?family=Amarante' rel='stylesheet' />
+		<link href='https://fonts.googleapis.com/css?family=Bebas Neue' rel='stylesheet'/>
+		<style>
+		 .active 
+		{
+				  background-color: #96AFAF;
+				  color: white;
+		}
+		.error
+		{
+			color: red;
+		}
+		.backcolor
+		{
+		 		  background-color: #DAFFFF;
+	
+		}
+		.fsize	{
+    			font-family: 'Bebas Neue';font-size: 65px;
+				}
+		</style>
+	</h:head>
+	
+	<h:body>
+	<div class="topnav">
+			  <a href="LandingPage.xhtml">Home</a>
+			  <a href="register.xhtml">Register</a>
+			  <a class="active">Log-In</a>
+			  <a href="info-page.xhtml">Information Page</a>
+			  <a href="beyond-the-sea.xhtml">Beyond the Sea</a>
+			  <a href="shop.xhtml">Fish Shop</a>
+			  <a href="fundraising.xhtml">Fundraising</a>
+			  <a href="AboutUs.xhtml">About Us</a>
+			  <a href="user-profile.xhtml">Profile</a>
+		</div>
+	<div class="container">
+		<h2>Update account details</h2>
+		<h:form>
+		<fieldset>
+		
+		<!-- profile pic above first name -->
+		
+		First Name : <h:inputText value="#{projectBean.fName}" id="fName" required="true" requiredMessage="   First name is required"></h:inputText>
+		<h:message for="fName" styleClass="error"></h:message>
+		
+		<br/><br/>
+		
+		Last Name : <h:inputText value="#{projectBean.lName}" id="lName" required="true" requiredMessage="   Last name is required"></h:inputText>
+		<h:message for="lName" styleClass="error"></h:message>
+		
+		<br/><br/>
+		
+		Change email : <h:inputText value="#{projectBean.email}" id="email" required="true" requiredMessage="   Email is required" validatorMessage="   Invalid email format.">
+			<f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"/>
+		</h:inputText>
+		<h:message for="email" styleClass="error"></h:message>
+		
+		<br/><br/>
+		
+		Change password : <h:inputText value="#{projectBean.password}" id="password" required="true" requiredMessage="   Password is required"></h:inputText>
+		<h:message for="password" styleClass="error"></h:message>
+		
+		<br/><br/>
+		
+		New mobile number: <h:inputText id="mobileNum" value="#{projectBean.mobileNum}">
+			
+		</h:inputText>
+	   
+		<br/><br/>
+		
+		Birthday : <h:inputText value="#{projectBean.bday}" id="bday" required="true" />
+		
+		Gender:
+			<h:selectOneMenu value="#{projectBean.gender}">
+				<f:selectItem itemValue="Male" itemLabel="Male"/>
+				<f:selectItem itemValue="Female" itemLabel="Female"/>
+			    <f:selectItem itemValue="Others" itemLabel="Others"/>
+			</h:selectOneMenu>
+			
+		<br/><br/>
+		
+		</fieldset>
+		<br/>
+		<h:commandButton value="Update" action="#{projectController.updateUser(users)}"></h:commandButton>
+		<br/><br/>
+		
+		<p><h:outputLink value="user=profile.xhtml">Back to Account</h:outputLink></p>
+		</h:form>
+		<br/>
+	</div>
+	</h:body>
+</html>

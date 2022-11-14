@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"	
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+	
+	<h:head>
+		<title>Register</title>
+		<h:outputStylesheet library="css" name="style.css"/>
+		<h:outputStylesheet library="css" name="bootstrap.min.css"/>
+		<h:outputStylesheet library="css" name="form.css"/>
+		<link href='https://fonts.googleapis.com/css?family=Bebas Neue' rel='stylesheet'/>
+		<style>
+		.active {
+				  background-color: #96AFAF;
+				  color: white;
+				}
+		.error
+		 {
+		 	color: red;
+		 }
+		 .backcolor
+		{
+		 		  background-color: #DAFFFF;
+	
+		}
+		.fsize	{
+    			font-family: 'Bebas Neue';font-size: 65px;
+				}
+		</style>
+	</h:head>
+	
+	<h:body class="backcolor">
+	<div class="topnav">
+			  <a href="LandingPage.xhtml">Home</a>
+			  <a class="active" href="register.xhtml">Register</a>
+			  <a href="login.xhtml">Log-In</a>
+			  <a href="info-page.xhtml">Information Page</a>
+			  <a href="beyond-the-sea.xhtml">Beyond the Sea</a>
+			  <a href="shop.xhtml">Fish Shop</a>
+			  <a href="fundraising.xhtml">Fundraising</a>
+			  <a href="AboutUs.xhtml">About Us</a>
+			</div>
+			
+	<div class="container">
+		<h2 class="fsize">Create an Account</h2>
+		<h:form>
+		<fieldset>
+		First Name : <h:inputText value="#{projectBean.fName}" id="fName" required="true" requiredMessage="   Firstname is required"></h:inputText>
+		<h:message for="fName" styleClass="error"></h:message>
+		
+		<br/><br/>
+		
+		Last Name : <h:inputText value="#{projectBean.lName}" id="lName" required="true" requiredMessage="   Lastname is required"></h:inputText>
+		<h:message for="lName" styleClass="error"></h:message>
+		
+		<br/><br/>
+		
+		Email : <h:inputText value="#{projectBean.email}" id="email" required="true" requiredMessage="   Email is required" validatorMessage="   Invalid email format.">
+			<f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"/>
+		</h:inputText>
+		<h:message for="email" styleClass="error"></h:message>
+		
+		<br/><br/>
+		
+		Password : <h:inputSecret value="#{projectBean.password}" id="password" required="true" requiredMessage="   Password is required"></h:inputSecret>
+		<h:message for="password" styleClass="error"></h:message>
+		
+		<br/><br/>
+		
+		Mobile Number : <h:inputText id="mobileNum" value="#{projectBean.mobileNum}" >
+		
+		</h:inputText>
+		
+		
+		<br/><br/>
+		
+		Birthday: <h:inputText id="bday" value="#{projectBean.bday}" />
+			
+		<br/><br/>
+		
+		Gender:
+			<h:selectOneMenu value="#{projectBean.gender}">
+				<f:selectItem itemValue="Male" itemLabel="Male"/>
+				<f:selectItem itemValue="Female" itemLabel="Female"/>
+			    <f:selectItem itemValue="Others" itemLabel="Others"/>
+			</h:selectOneMenu>
+			
+		<br/><br/>
+			
+		</fieldset>
+		<br/>
+		<h:commandButton value="Create Account" action="#{projectController.addUser(projectBean)}" />
+		</h:form>
+		<br/>
+		<br/>
+		<br/>
+	</div>
+		
+	</h:body>
+</html>
